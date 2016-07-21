@@ -159,7 +159,7 @@ FOUNDATION_EXPORT NSString* const DroiQuery_OFFSET;
  *
  *  @return The DroiQuery object
  */
-//- (DroiQuery*) deleteByClass : (Class) clazz;
+- (DroiQuery*) deleteByClass : (Class) clazz;
 
 /**
  *  Update specific data from specific class
