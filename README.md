@@ -1,5 +1,5 @@
 # DroiCoreSDK 
-A library provides you to use powerful DroiBaaS cloud service from your iOS app. DroiCore SDK is foundation library of DroiBaaS. For more information, see [DroiBaaS](https://github.com/DroiCloud/DroiBaaS-SDK-iOS).
+A library provides you to use powerful DroiBaaS cloud service from your iOS app. DroiCore SDK is foundation library of DroiBaaS. For more information, see [DroiBaaS](https://github.com/DroiBaaS/DroiBaaS-Core-iOS).
 
 # Using DroiCoreSDK
 
@@ -20,6 +20,6 @@ end
 1. Add `App Transport Security Settings/Allow Arbitary Loads` into `Info.plist` and set the property value to `YES`  
 2. Add your `DROI_APP_ID` property with Application ID from DroiBaaS website into `Info.plist`.
 3. Add `[DroiCore initializeCore];` in `application:didFinishLaunchingWithOption` method.
-4. For more information, please see [DroiBaaS](https://github.com/DroiCloud/DroiBaaS-SDK-iOS).
+4. For more information, please see [DroiBaaS](https://github.com/DroiBaaS/DroiBaaS-Core-iOS).
 
 # Example Project
