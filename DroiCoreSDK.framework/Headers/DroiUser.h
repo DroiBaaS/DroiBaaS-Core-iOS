@@ -25,9 +25,6 @@ DroiExpose
 @property NSString* UserId;
 
 DroiExpose
-@property (getter=getPassword, setter=setPassword:) NSString* Password;
-
-DroiExpose
 @property NSString* Email;
 
 DroiExpose
@@ -41,6 +38,8 @@ DroiExpose
 
 DroiExpose
 @property BOOL Enabled;
+
+@property NSString* Password;
 
 #pragma mark - Properties
 
@@ -63,6 +62,8 @@ DroiExpose
 - (NSString*) signUpInBackground:(DroiSignUpCallback) callback;
 - (void) cancelBackgroundTask : (NSString*) taskId;
 - (DroiError*) logout;
+- (DroiError*) changePassword:(NSString*) oldPassword newPassword:(NSString*) newPassword;
+- (BOOL) changePasswordInBackground:(NSString*) oldPassword newPassword:(NSString*) newPassword callback:(DroiObjectCallback) callback;
 
 #pragma mark - Save methods
 - (DroiError*) save;

@@ -28,6 +28,7 @@ FOUNDATION_EXPORT NSString* const DroiQuery_SELECT;
 FOUNDATION_EXPORT NSString* const DroiQuery_INSERT;
 FOUNDATION_EXPORT NSString* const DroiQuery_DELETE;
 FOUNDATION_EXPORT NSString* const DroiQuery_UPDATE;
+FOUNDATION_EXPORT NSString* const DroiQuery_UPDATE_DATA;
 
 FOUNDATION_EXPORT NSString* const DroiQuery_WHERE;
 FOUNDATION_EXPORT NSString* const DroiQuery_COND;
@@ -35,7 +36,6 @@ FOUNDATION_EXPORT NSString* const DroiQuery_VALUES;
 FOUNDATION_EXPORT NSString* const DroiQuery_OR;
 FOUNDATION_EXPORT NSString* const DroiQuery_AND;
 
-FOUNDATION_EXPORT NSString* const DroiQuery_GROUPBY;
 FOUNDATION_EXPORT NSString* const DroiQuery_ORDERBY;
 
 FOUNDATION_EXPORT NSString* const DroiQuery_LIMIT;
@@ -189,6 +189,34 @@ FOUNDATION_EXPORT NSString* const DroiQuery_OFFSET;
  *  @return The DroiQuery object
  */
 - (DroiQuery*) updateByClass : (Class) clazz;
+
+/**
+ *  Increase data by specific key
+ *
+ *  @param arg1 The increasing key name
+ *
+ *  @return The DroiQuery object
+ */
+- (DroiQuery*) inc : (NSString*) arg1;
+
+/**
+ *  Decrease data by specific key
+ *
+ *  @param arg1 The decreasing key name
+ *
+ *  @return The DroiQuery object
+ */
+- (DroiQuery*) dec : (NSString*) arg1;
+
+/**
+ *  Set specific key data to value
+ *
+ *  @param arg1 The decreasing key name
+ *  @param value The updating data
+ *
+ *  @return The DroiQuery object
+ */
+- (DroiQuery*) set : (NSString*) arg1 withValue:(id) value;
 
 /**
  *  Add a condition for this query

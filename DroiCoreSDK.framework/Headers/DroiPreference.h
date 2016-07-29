@@ -11,7 +11,7 @@
 
 + (instancetype) instance;
 - (void) refresh;
-- (void) refreshWithCallback:(void(^)(BOOL, DroiError*)) callback;
+- (void) refreshInBackground:(void(^)(BOOL, DroiError*)) callback;
 
 - (id) valueForKey:(NSString*) key;
 @end

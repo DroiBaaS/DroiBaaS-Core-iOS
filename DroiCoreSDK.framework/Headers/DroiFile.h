@@ -40,21 +40,21 @@ DroiObjectName(@"_File")
 /**
  *  Construct `DroiFile` with file path.
  *
- *  @param fileName File path.
+ *  @param filePath File path.
  *
  *  @return `DroiFile`
  */
-+ (instancetype) fileWithFileName:(NSString*) fileName;
++ (instancetype) fileWithFilePath:(NSString*) filePath;
 
 /**
  *  Construct `DroiFile` with file path and mime type.
  *
- *  @param fileName File path.
+ *  @param filePath File path.
  *  @param mimeType File mime type.
  *
  *  @return `DroiFile`
  */
-+ (instancetype) fileWithFileName:(NSString*) fileName mimeType:(NSString*) mimeType;
++ (instancetype) fileWithFilePath:(NSString*) filePath mimeType:(NSString*) mimeType;
 /**
  *  Construct `DroiFile` with data and name.
  *
@@ -124,20 +124,20 @@ DroiObjectName(@"_File")
 /**
  *  Update file. Will remove old file after successfuly updated.
  *
- *  @param fileName File path.
+ *  @param filePath File path.
  *
  *  @return DroiError DroiError object. Developer should use isOk to check whether this result is OK.
  */
-- (DroiError*) updateFileName:(NSString*) fileName;
+- (DroiError*) updateFilePath:(NSString*) filePath;
 /**
  *  Update file. Will remove old file after successfuly updated.
  *
- *  @param fileName File path.
+ *  @param filePath File path.
  *  @param mimeType File mime type.
  *
  *  @return DroiError DroiError object. Developer should use isOk to check whether this result is OK.
  */
-- (DroiError*) updateFileName:(NSString*) fileName mimeType:(NSString*) mimeType;
+- (DroiError*) updateFilePath:(NSString*) filePath mimeType:(NSString*) mimeType;
 /**
  *  Update file. Will remove old file after successfuly updated.
  *
@@ -177,22 +177,22 @@ DroiObjectName(@"_File")
 /**
  *  Update file in background thread. Will remove old file after successfuly updated.
  *
- *  @param fileName File path.
+ *  @param filePath File path.
  *  @param callback The callback object `DroiObjectCallback` is used to receive save result.
  *
  *  @return taskId for calling the task.
  */
-- (NSString*) updateFileNameInBackground:(NSString*) fileName callback:(DroiObjectCallback) callback;
+- (NSString*) updateFilePathInBackground:(NSString*) filePath callback:(DroiObjectCallback) callback;
 /**
  *  Update file in background thread. Will remove old file after successfuly updated.
  *
- *  @param fileName File path.
+ *  @param filePath File path.
  *  @param mimeType File mime type.
  *  @param callback The callback object `DroiObjectCallback` is used to receive save result.
  *
  *  @return taskId for calling the task.
  */
-- (NSString*) updateFileNameInBackground:(NSString*) fileName mimeType:(NSString*) mimeType callback:(DroiObjectCallback) callback;
+- (NSString*) updateFilePathInBackground:(NSString*) filePath mimeType:(NSString*) mimeType callback:(DroiObjectCallback) callback;
 /**
  *  Update file in background thread. Will remove old file after successfuly updated.
  *
