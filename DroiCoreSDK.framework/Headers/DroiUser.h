@@ -75,6 +75,7 @@ DroiExpose
 + (void) setAutoAnonymousUser:(BOOL) autoAnonymousUser;
 - (BOOL) isEmailVerified;
 - (BOOL) isAuthorized;
+- (BOOL) isLoggedIn;
 - (BOOL) isAnonymous;
 
 #pragma mark - Validation
