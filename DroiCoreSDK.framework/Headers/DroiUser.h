@@ -7,7 +7,9 @@
 #import "DroiError.h"
 @import UIKit;
 
+@class DroiUser;
 typedef void(^DroiSignUpCallback)(BOOL result, DroiError* error);
+typedef void(^DroiLoginCallback)(DroiUser* user, DroiError* error);
 
 @class UIView;
 @protocol IOAuthProvider <NSObject>
@@ -50,7 +52,9 @@ DroiExpose
 + (id) getCurrentUserByUserClass:(Class) userClazz;
 
 + (instancetype) login: (NSString*) userId password:(NSString*) password error:(DroiError**) error;
++ (BOOL) loginInBackground:(NSString*) userId password:(NSString*) password callback:(DroiLoginCallback) callback;
 + (id) loginByUserClass : (NSString*) userId password:(NSString*) password userClass:(Class) userClazz error:(DroiError**) error;
++ (BOOL) loginByUserClassInBackground : (NSString*) userId password:(NSString*) password userClass:(Class) userClazz callback:(DroiLoginCallback) callback;
 
 // TODO: OAuth
 + (instancetype) loginWithOAuth : (UIView*) view oauth:(id<IOAuthProvider>) provider userClass:(Class) userClazz error:(DroiError**) error;
@@ -62,6 +66,7 @@ DroiExpose
 - (NSString*) signUpInBackground:(DroiSignUpCallback) callback;
 - (void) cancelBackgroundTask : (NSString*) taskId;
 - (DroiError*) logout;
+- (BOOL) logoutInBackground:(DroiObjectCallback) callback;
 - (DroiError*) changePassword:(NSString*) oldPassword newPassword:(NSString*) newPassword;
 - (BOOL) changePasswordInBackground:(NSString*) oldPassword newPassword:(NSString*) newPassword callback:(DroiObjectCallback) callback;
 
