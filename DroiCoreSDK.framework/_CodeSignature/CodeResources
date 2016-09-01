@@ -34,15 +34,19 @@
 		</data>
 		<key>Headers/DroiGroup.h</key>
 		<data>
-		g1NH77qp7dADbf1peWqf+UF+NyI=
+		jtKTRABQNIl/6aVejFl4fI4HwPI=
 		</data>
 		<key>Headers/DroiGroupRelation.h</key>
 		<data>
 		SqyQW6+IV6slm8Vv1bcxj4wkbDI=
 		</data>
+		<key>Headers/DroiOAuthProvider.h</key>
+		<data>
+		Q5zxGWuPho8N1sGYdpse2+htjSU=
+		</data>
 		<key>Headers/DroiObject.h</key>
 		<data>
-		CgFFzcq16HeGGQAw6oGBU3Pf9II=
+		LIXpykYS57hsW5gXbBORzQTixDc=
 		</data>
 		<key>Headers/DroiPermission.h</key>
 		<data>
@@ -54,7 +58,7 @@
 		</data>
 		<key>Headers/DroiQuery.h</key>
 		<data>
-		3hDe46BkDB8w12nQZyQYahb5gIU=
+		l5UW5VszUMX4IGXzvhwEI/Fy8mk=
 		</data>
 		<key>Headers/DroiReferenceObject.h</key>
 		<data>
@@ -70,11 +74,11 @@
 		</data>
 		<key>Headers/DroiUser.h</key>
 		<data>
-		fEaJf/v8srmq2uMSUe72vD7fK54=
+		su8oUJjFsUc/4PY9cExs6sqBMn4=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		JOT2vMFI3B332gnnM2h2bZtpYXY=
+		MlN7MEzeYhZdkU7/K2/IyC91Gvw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -164,11 +168,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			g1NH77qp7dADbf1peWqf+UF+NyI=
+			jtKTRABQNIl/6aVejFl4fI4HwPI=
 			</data>
 			<key>hash2</key>
 			<data>
-			C2WO4YyrNb4gpm5Oddhkr5LFKTG2wJzRmVJMoyJi9pY=
+			vsDeVuediLHSAoIeiVSCRHltxPDrJHWgN4DFsHLr4Yw=
 			</data>
 		</dict>
 		<key>Headers/DroiGroupRelation.h</key>
@@ -182,15 +186,26 @@
 			PEnZKYuuNfTEheYCKpVBI4FnM/Mn8cXYocg7zPSZ7wE=
 			</data>
 		</dict>
+		<key>Headers/DroiOAuthProvider.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Q5zxGWuPho8N1sGYdpse2+htjSU=
+			</data>
+			<key>hash2</key>
+			<data>
+			MnwGcKOwUggeQuy6PBQ2bBfA65PgFkvVMM84VkH47aI=
+			</data>
+		</dict>
 		<key>Headers/DroiObject.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			CgFFzcq16HeGGQAw6oGBU3Pf9II=
+			LIXpykYS57hsW5gXbBORzQTixDc=
 			</data>
 			<key>hash2</key>
 			<data>
-			1YktnV9N/h4+YApjhP139R7euTJal3mmIXEcPeCrIaw=
+			yAhT/Z/5iwOcHkGS9o6U73H7uIw/ZicJlzEIZOwO32A=
 			</data>
 		</dict>
 		<key>Headers/DroiPermission.h</key>
@@ -219,11 +234,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			3hDe46BkDB8w12nQZyQYahb5gIU=
+			l5UW5VszUMX4IGXzvhwEI/Fy8mk=
 			</data>
 			<key>hash2</key>
 			<data>
-			zSjkDOWvAsUjYJeCZ16Le9SvyJYTzQRjsrT7SgOVpqM=
+			Hm1pYJF0hkEXYGtBUlknuBIVn96CFkit5bDJE3q+fgE=
 			</data>
 		</dict>
 		<key>Headers/DroiReferenceObject.h</key>
@@ -263,11 +278,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			fEaJf/v8srmq2uMSUe72vD7fK54=
+			su8oUJjFsUc/4PY9cExs6sqBMn4=
 			</data>
 			<key>hash2</key>
 			<data>
-			vcvyqWXpZ9d8/ofDdcwUze/Clo6qo5rSol23uGVrrO0=
+			4dWPRSfCSCb0fYX2ARJd7Bx/2yvtnBe4D6D6pbEQy0I=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

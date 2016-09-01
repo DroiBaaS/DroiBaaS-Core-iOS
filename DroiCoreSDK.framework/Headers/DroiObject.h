@@ -122,6 +122,24 @@ typedef void(^DroiObjectCallback)(BOOL result, DroiError* error);
  */
 + (void) cancelBackgroundTask : (NSString*) taskId;
 
+#pragma mark - Fetch 
+
+/**
+ *  Refresh current object data from server.
+ *
+ *  @return DroiError DroiError object. Developer should use isOk to check whether this result is OK.
+ */
+- (DroiError*) fetch;
+
+/**
+ *  Refresh current object data from server.
+ *
+ *  @param callback The callback object `DroiObjectCallback` is used to receive save result.
+ *
+ *  @return return boolean value
+ */
+- (BOOL) fetchInBackground:(DroiObjectCallback) callback;
+
 #pragma mark - Permission
 /**
  *  The data permission (DroiPermission) for DroiObject

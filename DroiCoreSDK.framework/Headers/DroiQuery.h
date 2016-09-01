@@ -113,46 +113,6 @@ FOUNDATION_EXPORT NSString* const DroiQuery_OFFSET;
 - (DroiQuery*) queryByClass : (Class) clazz;
 
 /**
- *  Insert an object to storage by specific class
- *
- *  @param object The object
- *  @param clazz  The specific class
- *
- *  @return The DroiQuery object
- */
-- (DroiQuery*) insertObject : (DroiObject*) object withClass : (Class) clazz;
-
-/**
- *  Insert an object to storage by specific class name
- *
- *  @param object    The object
- *  @param className The specific class name
- *
- *  @return The DroiQuery object
- */
-- (DroiQuery*) insertObject : (DroiObject*) object withClassName : (NSString*) className;
-
-/**
- *  Delete specific object from specific class
- *
- *  @param object The object
- *  @param clazz  The specific class
- *
- *  @return The DroiQuery object
- */
-- (DroiQuery*) deleteObject : (DroiObject*) object withClass : (Class) clazz;
-
-/**
- *  Delete specific object from specific class name
- *
- *  @param object    The object
- *  @param className The specific class name
- *
- *  @return The DroiQuery object
- */
-- (DroiQuery*) deleteObject : (DroiObject*) object withClassName : (NSString*) className;
-
-/**
  *  Delete all data from specific class
  *
  *  @param clazz The specific class
@@ -160,26 +120,6 @@ FOUNDATION_EXPORT NSString* const DroiQuery_OFFSET;
  *  @return The DroiQuery object
  */
 - (DroiQuery*) deleteByClass : (Class) clazz;
-
-/**
- *  Update specific data from specific class
- *
- *  @param object The object
- *  @param clazz  The specific class
- *
- *  @return The DroiQuery object
- */
-- (DroiQuery*) updateObject : (DroiObject*) object withClass : (Class) clazz;
-
-/**
- *  Update specific data from specific class name
- *
- *  @param object    The object
- *  @param className The specific class name
- *
- *  @return The DroiQuery object
- */
-- (DroiQuery*) updateObject : (DroiObject*) object withClassName : (NSString*) className;
 
 /**
  *  Update all data from specific class

@@ -5,20 +5,12 @@
 
 #import "DroiObject.h"
 #import "DroiError.h"
-@import UIKit;
+#import "DroiOAuthProvider.h"
+#import "UIKit/UIKit.h"
 
 @class DroiUser;
 typedef void(^DroiSignUpCallback)(BOOL result, DroiError* error);
 typedef void(^DroiLoginCallback)(DroiUser* user, DroiError* error);
-
-@class UIView;
-@protocol IOAuthProvider <NSObject>
-
-@required
-- (BOOL) isTokenValid;
-- (NSString*) sessionToken;
-- (NSString*) OAuthProviderName;
-@end
 
 DroiObjectName(@"_User")
 @interface DroiUser : DroiObject
@@ -56,9 +48,8 @@ DroiExpose
 + (id) loginByUserClass : (NSString*) userId password:(NSString*) password userClass:(Class) userClazz error:(DroiError**) error;
 + (BOOL) loginByUserClassInBackground : (NSString*) userId password:(NSString*) password userClass:(Class) userClazz callback:(DroiLoginCallback) callback;
 
-// TODO: OAuth
-+ (instancetype) loginWithOAuth : (UIView*) view oauth:(id<IOAuthProvider>) provider userClass:(Class) userClazz error:(DroiError**) error;
-+ (instancetype) loginWithOAuth : (UIView*) view oauth:(id<IOAuthProvider>) provider error:(DroiError**) error;
++ (BOOL) loginWithOAuth :(DroiOAuthProvider*) provider callback:(DroiLoginCallback) callback userClass:(Class) userClazz;
++ (BOOL) loginWithOAuth :(DroiOAuthProvider*) provider callback:(DroiLoginCallback) callback;
 + (instancetype) loginWithAnonymous:(DroiError**) error;
 
 #pragma mark - Login/Logout
@@ -69,6 +60,10 @@ DroiExpose
 - (BOOL) logoutInBackground:(DroiObjectCallback) callback;
 - (DroiError*) changePassword:(NSString*) oldPassword newPassword:(NSString*) newPassword;
 - (BOOL) changePasswordInBackground:(NSString*) oldPassword newPassword:(NSString*) newPassword callback:(DroiObjectCallback) callback;
+
+#pragma mark - OAuth bind/unbind
+- (BOOL) bindOAuth:(DroiOAuthProvider*) provider callback:(DroiObjectCallback) callback;
+- (BOOL) unbindOAuth:(DroiOAuthProvider*) provider callback:(DroiObjectCallback) callback;
 
 #pragma mark - Save methods
 - (DroiError*) save;

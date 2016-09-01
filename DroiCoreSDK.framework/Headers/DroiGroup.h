@@ -4,6 +4,8 @@
  */
 #import "DroiObject.h"
 
+typedef void(^DroiGetGroupCallback)(NSArray* result, DroiError* error);
+
 DroiObjectName(@"_Group")
 @interface DroiGroup : DroiObject
 
@@ -29,6 +31,13 @@ DroiExpose
 
 #pragma mark - Constructor
 - (id) initWithName : (NSString*) name;
+
+#pragma mark - Static Methods
+
++ (NSArray*) getGroupIdsByUserObjectId:(NSString*) objectId error:(DroiError**) error;
++ (NSArray*) getGroupIdsByGroupObjectId:(NSString*) objectId error:(DroiError**) error;
++ (BOOL) getGroupIdsByUserObjectIdInBackground:(NSString*) objectId callback:(DroiGetGroupCallback) callback;
++ (BOOL) getGroupIdsByGroupObjectIdInBackground:(NSString*) objectId callback:(DroiGetGroupCallback) callback;
 
 #pragma mark - Public Methods
 /**
@@ -81,14 +90,14 @@ DroiExpose
 /**
  *  Retrieve all users and sub group belong this group.
  */
-- (void) fetch;
+- (void) fetchRelation;
 
 /**
  *  Retrieve all users and sub group belong this group in background process. The call will be executed in background thread.
  *
  *  @param callback Result callback
  */
-- (void) fetchInBackground : (void(^)(BOOL)) callback;
+- (void) fetchRelationInBackground : (void(^)(BOOL)) callback;
 
 
 @end
