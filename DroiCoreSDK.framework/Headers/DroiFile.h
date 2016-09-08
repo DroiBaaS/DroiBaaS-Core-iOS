@@ -33,6 +33,14 @@ typedef void(^DroiFileProgressCallback)(long current, long max);
 typedef void(^DroiFileGetUrlCallback)(NSURL* url);
 
 /**
+ *  getUrlWithFlagInBackground callback.
+ *
+ *  @param url     File url.
+ *  @param isLocal true for local url.
+ */
+typedef void(^DroiFileGetUrlWithFlagCallback)(NSURL* url, BOOL isLocal);
+
+/**
  *  Be able upload/download file to DroiCloud with DroiFile.
  */
 DroiObjectName(@"_File")
@@ -242,6 +250,15 @@ DroiObjectName(@"_File")
 - (NSURL*) getUrl;
 
 /**
+ *  Get file url.
+ *
+ *  @param isLocal Returned url is local or not.
+ *
+ *  @return URL
+ */
+- (NSURL*) getUrl:(BOOL*) isLocal;
+
+/**
  *  Get file url in background thread.
  *
  *  @param callback url callback function.
@@ -249,6 +266,15 @@ DroiObjectName(@"_File")
  *  @return false to fail to run in background thread.
  */
 - (BOOL) getUrlInBackground:(DroiFileGetUrlCallback) callback;
+
+/**
+ *  Get file url in background thread with isLocal flag;
+ *
+ *  @param callback callback function
+ *
+ *  @return false to fail to run in background thread.
+ */
+- (BOOL) getUrlWithFlagInBackground:(DroiFileGetUrlWithFlagCallback) callback;
 /**
  *  Is the file content data modified.
  */

@@ -19,10 +19,10 @@ DroiExpose
 @property NSString* UserId;
 
 DroiExpose
-@property NSString* Email;
+@property (getter=getEmail, setter=setEmail:) NSString* Email;
 
 DroiExpose
-@property NSString* PhoneNum;
+@property (getter=getPhoneNum, setter=setPhoneNum:) NSString* PhoneNum;
 
 DroiExpose
 @property BOOL EmailVerified;
