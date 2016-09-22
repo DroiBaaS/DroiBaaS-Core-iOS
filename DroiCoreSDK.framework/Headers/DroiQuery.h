@@ -55,6 +55,16 @@ FOUNDATION_EXPORT NSString* const DroiQuery_OFFSET;
 - (DroiError*) run;
 
 /**
+ *  Execute DroiQuery to query data in background
+ *
+ *  @param callback The DroiQueryCallback block. DroiQuery would put the query result before calling this block
+ *
+ *  @return The taskId of background task
+ */
+
+- (NSUInteger) runInBackground : (DroiObjectCallback) callback;
+
+/**
  *  Execute DroiQuery to query data
  *
  *  @param error DroiError

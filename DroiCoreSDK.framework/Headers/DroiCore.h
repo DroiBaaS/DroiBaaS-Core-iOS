@@ -53,4 +53,5 @@
  *  @return Channel name
  */
 + (NSString*) getChannelName;
++ (NSDate*) getTimestamp;
 @end
