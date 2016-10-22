@@ -259,6 +259,17 @@ DroiObjectName(@"_File")
 - (NSURL*) getUrl:(BOOL*) isLocal;
 
 /**
+ *  Get file url.
+ *
+ *  @param isLocal Returned url is local or not.
+ *
+ *  @param error Error details.
+ *
+ *  @return URL
+ */
+- (NSURL*) getUrl:(BOOL*) isLocal error:(DroiError**) error;
+
+/**
  *  Get file url in background thread.
  *
  *  @param callback url callback function.

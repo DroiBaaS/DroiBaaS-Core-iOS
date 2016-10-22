@@ -109,6 +109,24 @@ FOUNDATION_EXPORT NSString* const DroiCondition_NOTIN;
  */
 - (DroiCondition*) and : (DroiCondition*) arg;
 
+/**
+ *  Combine two DroiCondition object by 'OR' operator
+ *
+ *  @param arg The DroiCondition object
+ *
+ *  @return The new DroiCondition object
+ */
+- (DroiCondition*) opOr : (DroiCondition*) arg;
+
+/**
+ *  Combine two DroiCondition object by 'AND' operator
+ *
+ *  @param arg The DroiCondition object
+ *
+ *  @return The new DroiCondition object
+ */
+- (DroiCondition*) opAnd : (DroiCondition*) arg;
+
 #pragma mark - Instance methods
 /**
  *  Create DroiCondition object

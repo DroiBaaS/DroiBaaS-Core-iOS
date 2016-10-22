@@ -161,7 +161,7 @@ FOUNDATION_EXPORT NSString* const DroiQuery_OFFSET;
 /**
  *  Set specific key data to value
  *
- *  @param arg1 The decreasing key name
+ *  @param arg1 The key name
  *  @param value The updating data
  *
  *  @return The DroiQuery object

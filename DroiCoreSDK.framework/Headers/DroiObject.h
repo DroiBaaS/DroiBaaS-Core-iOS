@@ -55,6 +55,13 @@ typedef void(^DroiObjectCallback)(BOOL result, DroiError* error);
 - (DroiError*) delete;
 
 /**
+ *  Delete this object from storage.
+ *
+ *  @return DroiError DroiError object. Developer should use isOk to check whether this result is OK.
+ */
+- (DroiError*) opDelete;
+
+/**
  *  Save this object to storage by a background thread.
  *
  *  @param callback The callback object `DroiObjectCallback` is used to receive save result.
