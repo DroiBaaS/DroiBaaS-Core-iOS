@@ -87,7 +87,7 @@ FOUNDATION_EXPORT NSString* const DroiQuery_OFFSET;
  *
  *  @param taskId The taskId of background task
  */
-- (void) cancelTask : (NSUInteger) taskId;
++ (void) cancelTask : (NSUInteger) taskId;
 
 #pragma mark - Condition builder
 /**

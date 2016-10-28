@@ -291,6 +291,19 @@ DroiObjectName(@"_File")
  */
 @property BOOL isContentDirty;
 
+/**
+ *  Get name.
+ */
+@property (readonly, getter=getName) NSString* name;
+/**
+ *  Get data size.
+ */
+@property (readonly, getter=getSize) int size;
+/**
+ *  Get data md5.
+ */
+@property (readonly, getter=getMd5) NSString* md5;
+
 -(instancetype) init __attribute__((unavailable("init not available")));
 
 @end
