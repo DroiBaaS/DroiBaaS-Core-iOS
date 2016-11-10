@@ -10,7 +10,7 @@
 @property (readonly) BOOL isReady;
 
 + (instancetype) instance;
-- (void) refresh;
+- (DroiError*) refresh;
 - (void) refreshInBackground:(void(^)(BOOL, DroiError*)) callback;
 
 - (id) valueForKey:(NSString*) key;
