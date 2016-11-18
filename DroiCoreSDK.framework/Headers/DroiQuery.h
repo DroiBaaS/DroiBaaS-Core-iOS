@@ -12,9 +12,18 @@
  *  The callback is used for DroiQuery
  *
  *  @param result The query result
- *  @param err DroiError DroiError object. Developer should use isOk to check whether this result is OK.
+ *  @param err DroiError object. Developer should use isOk to check whether this result is OK.
  */
 typedef void(^DroiQueryCallback)(NSArray* result, DroiError* err);
+
+
+/**
+ The callback used in countInBackground
+
+ @param count data count.
+ @param err DroiError object. Developer should use isOk to check whether this result is OK.
+ */
+typedef void(^DroiQueryCountCallback)(NSInteger count, DroiError* err);
 
 #ifndef DroiQueryAnnotation
 #define DroiQueryAnnotation
@@ -29,6 +38,7 @@ FOUNDATION_EXPORT NSString* const DroiQuery_INSERT;
 FOUNDATION_EXPORT NSString* const DroiQuery_DELETE;
 FOUNDATION_EXPORT NSString* const DroiQuery_UPDATE;
 FOUNDATION_EXPORT NSString* const DroiQuery_UPDATE_DATA;
+FOUNDATION_EXPORT NSString* const DroiQuery_COUNT;
 
 FOUNDATION_EXPORT NSString* const DroiQuery_WHERE;
 FOUNDATION_EXPORT NSString* const DroiQuery_COND;
@@ -64,10 +74,28 @@ FOUNDATION_EXPORT NSString* const DroiQuery_OFFSET;
 
 - (NSUInteger) runInBackground : (DroiObjectCallback) callback;
 
+
+/**
+ Query data count.
+
+ @param error Pass DroiError to get error code. Pass nil to ignore error details.
+ @return Data count
+ */
+- (NSInteger) count:(DroiError**) error;
+
+
+/**
+ Query data count in background task.
+
+ @param callback The DroiQueryCountCallback block. DroiQuery would put the query result before calling this block
+ @return The taskId of background task
+ */
+- (NSUInteger) countInBackground: (DroiQueryCountCallback) callback;
+
 /**
  *  Execute DroiQuery to query data
  *
- *  @param error DroiError
+ *  @param error Pass DroiError to get error code. Pass nil to ignore error details.
  *
  *  @return The query result.
  */
