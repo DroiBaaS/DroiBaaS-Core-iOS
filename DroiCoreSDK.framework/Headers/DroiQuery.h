@@ -48,8 +48,16 @@ FOUNDATION_EXPORT NSString* const DroiQuery_AND;
 
 FOUNDATION_EXPORT NSString* const DroiQuery_ORDERBY;
 
+FOUNDATION_EXPORT NSString* const DroiQuery_INC;
+FOUNDATION_EXPORT NSString* const DroiQuery_DEC;
+FOUNDATION_EXPORT NSString* const DroiQuery_SET;
+
 FOUNDATION_EXPORT NSString* const DroiQuery_LIMIT;
 FOUNDATION_EXPORT NSString* const DroiQuery_OFFSET;
+
+FOUNDATION_EXPORT NSString* const DroiQuery_ASC;
+FOUNDATION_EXPORT NSString* const DroiQuery_DESC;
+
 
 /**
  *  The DroiQuery class defines a query that is used to query DroiObject. 

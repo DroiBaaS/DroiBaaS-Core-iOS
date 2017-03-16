@@ -14,7 +14,6 @@
 #import "DroiTaskDispatcher.h"
 #import "DroiPermission.h"
 #import "DroiGroup.h"
-#import "DroiGroupRelation.h"
 #import "DroiCloud.h"
 #import "DroiPreference.h"
 #import "DroiReferenceObject.h"

@@ -8,6 +8,11 @@
 #import "DroiOAuthProvider.h"
 #import "UIKit/UIKit.h"
 
+typedef NS_ENUM(NSUInteger, DroiContactType) {
+//    DROICONTACT_EMAIL,
+    DROICONTACT_PHONE
+};
+
 @class DroiUser;
 typedef void(^DroiSignUpCallback)(BOOL result, DroiError* error); /// Callback for signup
 typedef void(^DroiLoginCallback)(DroiUser* user, DroiError* error); /// Callback for login
@@ -117,6 +122,25 @@ DroiExpose
  */
 + (instancetype) loginWithAnonymous:(DroiError**) error;
 
+/**
+ Reset user password.
+
+ @param userId UserId
+ @param DroiContactType DroiContactType
+ @return DroiError DroiError object. Developer should use isOk to check whether this result is OK.
+ */
++ (DroiError*) resetPasswordWithUserId:(NSString*) userId type:(DroiContactType) type;
+
+/**
+ Confirm reset user password with pin code.
+
+ @param userId UserId
+ @param pinCode Pin code.
+ @param newPassword New user password.
+ @return DroiError DroiError object. Developer should use isOk to check whether this result is OK.
+ */
++ (DroiError*) confirmResetPasswordWithUserId:(NSString*) userId pinCode:(NSString*) pinCode newPassword:(NSString*) newPassword;
+
 #pragma mark - Login/Logout
 
 /**
@@ -133,6 +157,15 @@ DroiExpose
  @return Task id. The task can be cancel via cancelBackgroundTask:
  */
 - (NSString*) signUpInBackground:(DroiSignUpCallback) callback;
+
+/**
+ Signup with OAuth provider
+
+ @param provider OAuth provider. Please call [DroiOAuthProvider providerWithType:] to create provider.
+ @param callback The callback object DroiObjectCallback is used to receive save result.
+ @return YES for enqueued.
+ */
+- (BOOL) signUpOAuth:(DroiOAuthProvider*) provider callback:(DroiObjectCallback) callback;
 
 /**
  Cancel background task

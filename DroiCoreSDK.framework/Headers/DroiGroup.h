@@ -3,6 +3,7 @@
  * All rights reserved.
  */
 #import "DroiObject.h"
+#import "DroiError.h"
 
 typedef void(^DroiGetGroupCallback)(NSArray* result, DroiError* error);
 
@@ -14,6 +15,18 @@ DroiExpose
  *  Group Name
  */
 @property NSString* Name;
+
+DroiExpose
+/**
+ Groups that belongs in this group
+ */
+@property NSArray* Groups;
+
+DroiExpose
+/**
+ Users that belongs in this group
+ */
+@property NSArray* Users;
 
 /**
  *  The users and sub groups will not default fetched after queried. Must call @ref fetch to retrieve users and sub groups
@@ -30,13 +43,51 @@ DroiExpose
 + (instancetype) groupWithName:(NSString*) name;
 
 #pragma mark - Constructor
+
+/**
+ init with group name
+
+ @param name Group name
+ @return instance
+ */
 - (id) initWithName : (NSString*) name;
 
 #pragma mark - Static Methods
 
+/**
+ Find all groups that user belonged.
+
+ @param objectId User object id
+ @param error DroiError object. Developer should use isOk to check whether this result is OK.
+ @return Groups array
+ */
 + (NSArray*) getGroupIdsByUserObjectId:(NSString*) objectId error:(DroiError**) error;
+
+/**
+ FInd all groups that group belonged.
+
+ @param objectId Group object id
+ @param error DroiError object. Developer should use isOk to check whether this result is OK.
+ @return Groups array
+ */
 + (NSArray*) getGroupIdsByGroupObjectId:(NSString*) objectId error:(DroiError**) error;
+
+/**
+ Find all groups that user belonged in background.
+
+ @param objectId User object id.
+ @param callback Callback for result.
+ @return YES for successfully enqueued.
+ */
 + (BOOL) getGroupIdsByUserObjectIdInBackground:(NSString*) objectId callback:(DroiGetGroupCallback) callback;
+
+/**
+ Find all groups that group belonged in background.
+
+ @param objectId Group object id.
+ @param callback Callback for result.
+ @return YES for successfully enqueued.
+ */
 + (BOOL) getGroupIdsByGroupObjectIdInBackground:(NSString*) objectId callback:(DroiGetGroupCallback) callback;
 
 #pragma mark - Public Methods
@@ -90,14 +141,14 @@ DroiExpose
 /**
  *  Retrieve all users and sub group belong this group.
  */
-- (void) fetchRelation;
+- (DroiError*) fetchRelation;
 
 /**
  *  Retrieve all users and sub group belong this group in background process. The call will be executed in background thread.
  *
  *  @param callback Result callback
  */
-- (void) fetchRelationInBackground : (void(^)(BOOL)) callback;
+- (BOOL) fetchRelationInBackground : (void(^)(BOOL)) callback;
 
 
 @end

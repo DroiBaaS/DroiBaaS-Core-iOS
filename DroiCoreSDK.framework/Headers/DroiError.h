@@ -6,6 +6,7 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(int, DroiErrorCode) {
+    // General group
     DROICODE_OK = 0,
     DROICODE_UNKNOWN_ERROR = 1070000,
     DROICODE_ERROR = 1070001,
@@ -26,7 +27,24 @@ typedef NS_ENUM(int, DroiErrorCode) {
     DROICODE_FILE_NOT_READY = 1070016,
     DROICODE_CORE_NOT_INITIALIZED = 1070017,
     DROICODE_USER_CANCELED = 1070018,
-    DROICODE_BANDWIDTH_LIMIT_EXCEED = 1070019
+    DROICODE_BANDWIDTH_LIMIT_EXCEED = 1070019,
+    
+    
+    // Not allowed call this function from mainthread = 1070004
+    DROICODE_APPLICATION_ID_UNCORRECTED = 1070101,
+    
+    // Network group
+    DROICODE_TIME_UNCORRECTED = 1070201,
+    DROICODE_TIMEOUT = 1070202,
+    
+    // Users group
+    DROICODE_USER_ALREADY_LOGIN = 1070301,
+    DROICODE_USER_CONTACT_HAD_VERIFIED = 1070302,
+    DROICODE_USER_CONTACT_EMPTY = 1070303,
+    DROICODE_USER_FUNCTION_NOT_ALLOWED = 1070304,
+    
+    // DroiObject / DroiQuery
+    
 };
 
 /**
