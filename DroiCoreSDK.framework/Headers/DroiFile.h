@@ -286,23 +286,21 @@ DroiObjectName(@"_File")
  *  @return false to fail to run in background thread.
  */
 - (BOOL) getUrlWithFlagInBackground:(DroiFileGetUrlWithFlagCallback) callback;
-/**
- *  Is the file content data modified.
- */
-@property BOOL isContentDirty;
 
 /**
  *  Get name.
  */
-@property (readonly, getter=getName) NSString* name;
+@property (readonly) NSString* name;
 /**
  *  Get data size.
  */
-@property (readonly, getter=getSize) int size;
+@property (readonly) int size;
 /**
  *  Get data md5.
  */
-@property (readonly, getter=getMd5) NSString* md5;
+@property (readonly) NSString* md5;
+
+@property DroiFileProgressCallback progressCallback;
 
 -(instancetype) init __attribute__((unavailable("init not available")));
 

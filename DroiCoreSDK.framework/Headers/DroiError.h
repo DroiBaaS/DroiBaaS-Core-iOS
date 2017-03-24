@@ -44,6 +44,8 @@ typedef NS_ENUM(int, DroiErrorCode) {
     DROICODE_USER_FUNCTION_NOT_ALLOWED = 1070304,
     
     // DroiObject / DroiQuery
+    DROICODE_READ_CACHE_FILE_FAILED = 10700501,
+    DROICODE_UPLOAD_FILE_FAILED = 1070502, // Upload file failed
     
 };
 
