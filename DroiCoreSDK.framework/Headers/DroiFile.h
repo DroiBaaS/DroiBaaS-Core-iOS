@@ -230,6 +230,7 @@ DroiObjectName(@"_File")
  *  @return taskId for calling the task.
  */
 - (NSString*) updateDataInBackground:(NSData*) data mimeType:(NSString*) mimeType callback:(DroiObjectCallback) callback;
+
 /**
  *  Update file in background thread. Will remove old file after successfuly updated.
  *
@@ -241,6 +242,12 @@ DroiObjectName(@"_File")
  *  @return taskId for calling the task.
  */
 - (NSString*) updateDataInBackground:(NSData*) data name:(NSString*) name mimeType:(NSString*) mimeType callback:(DroiObjectCallback) callback;
+
+/**
+ * Check whether there is Uri info. in DroiFile object
+ * @return YES - There is Uri info. in DroiFile object. Otherwise is NO
+ */
+- (BOOL) hasUrl;
 
 /**
  *  Get file url.

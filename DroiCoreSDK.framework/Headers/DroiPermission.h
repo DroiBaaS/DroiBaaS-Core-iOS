@@ -14,6 +14,8 @@
  */
 @interface DroiPermission : NSObject
 
+@property NSString* creator;
+
 #pragma mark - Default Permission
 /**
  *  Get default permission.
@@ -21,6 +23,15 @@
  *  @return permission.
  */
 + (instancetype) getDefaultPermission;
+
+/**
+ Copy from permission
+
+ @param permission permission
+ @return permission
+ */
++ (instancetype) permissionCopyFrom:(DroiPermission*) permission;
+
 /**
  *  Set default permission.
  *

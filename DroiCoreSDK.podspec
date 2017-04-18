@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "DroiCoreSDK"
-  s.version      = "1.1.2330"
+  s.version      = "1.1.2377"
   s.summary      = "This CoreSDK is one part of DroiBaaS for iOS"
   s.homepage     = "https://github.com/DroiBaaS/DroiBaaS-Core-iOS"
   s.license      = { :type => "Apache License, Version 2.0", :file => "LICENSE" }

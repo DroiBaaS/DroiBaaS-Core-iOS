@@ -14,31 +14,31 @@ typedef NS_ENUM(NSUInteger, DroiContactType) {
 };
 
 @class DroiUser;
-typedef void(^DroiSignUpCallback)(BOOL result, DroiError* error); /// Callback for signup
-typedef void(^DroiLoginCallback)(DroiUser* user, DroiError* error); /// Callback for login
+typedef void(^DroiSignUpCallback)(BOOL result, DroiError* error); // Callback for signup
+typedef void(^DroiLoginCallback)(DroiUser* user, DroiError* error); // Callback for login
 
 DroiObjectName(@"_User")
 @interface DroiUser : DroiObject
 
 DroiExpose
-@property NSString* UserId;  /// UserId
+@property NSString* UserId;  // UserId
 
 DroiExpose
-@property (getter=getEmail, setter=setEmail:) NSString* Email; /// Email
+@property (getter=getEmail, setter=setEmail:) NSString* Email; // Email
 
 DroiExpose
-@property (getter=getPhoneNum, setter=setPhoneNum:) NSString* PhoneNum; /// Phone number
+@property (getter=getPhoneNum, setter=setPhoneNum:) NSString* PhoneNum; // Phone number
 
 DroiExpose
-@property BOOL EmailVerified; /// The email had verified
+@property BOOL EmailVerified; // The email had verified
 
 DroiExpose
-@property BOOL PhoneNumVerified; /// The phone number had verified
+@property BOOL PhoneNumVerified; // The phone number had verified
 
 DroiExpose
-@property BOOL Enabled; /// This account is enabled or not.
+@property BOOL Enabled; // This account is enabled or not.
 
-@property NSString* Password; /// Password
+@property NSString* Password; // Password
 
 #pragma mark - Properties
 
@@ -247,10 +247,10 @@ DroiExpose
  @param autoAnonymousUser YES to enable.
  */
 + (void) setAutoAnonymousUser:(BOOL) autoAnonymousUser;
-- (BOOL) isEmailVerified; /// Is the email verified
-- (BOOL) isAuthorized; /// Is the current user logged in
-- (BOOL) isLoggedIn; /// Is the current user logged in
-- (BOOL) isAnonymous; /// Is the current user Anonymous.
+- (BOOL) isEmailVerified; // Is the email verified
+- (BOOL) isAuthorized; // Is the current user logged in
+- (BOOL) isLoggedIn; // Is the current user logged in
+- (BOOL) isAnonymous; // Is the current user Anonymous.
 
 #pragma mark - Validation
 
