@@ -81,8 +81,10 @@ typedef void(^DroiObjectCallback)(BOOL result, DroiError* error);
 
 /**
  *  Save this object eventually. This feature is only for cloud storage and would be sent to cloud if there is data connection available
+ *
+ *  @return DroiError DroiError object. Developer should use isOk to check whether this result is OK.
  */
-- (void) saveEventually;
+- (DroiError*) saveEventually;
 
 /**
  *  Help to save a list of DroiObject to storage.
@@ -174,6 +176,27 @@ typedef void(^DroiObjectCallback)(BOOL result, DroiError* error);
  *  @return YES if there is referenced object is changed
  */
 - (BOOL) isReferencedObjectDirty;
+
+#pragma mark - Atomic
+
+/**
+ Add value of field by amount atomically
+
+ @param field Field name
+ @param amount Amount
+ @return DroiError object. Developer should use isOk to check whether this result is OK.
+ */
+- (DroiError*) atomicAdd:(NSString*) field amount:(int) amount;
+
+/**
+ Add value of field by amount atomically in background
+
+ @param field Field name
+ @param amount Amount
+ @param callback The callback object `DroiObjectCallback` is used to receive save result.
+ @return task id
+ */
+- (NSString*) atomicAddInBackground:(NSString*) field amount:(int) amount callback:(DroiObjectCallback) callback;
 
 #pragma mark - Dictionary operations
 /**

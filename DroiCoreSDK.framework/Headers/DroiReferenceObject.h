@@ -15,6 +15,6 @@
 /**
  *  Current referenced object
  */
-@property id droiObject;
+@property DroiObject* droiObject;
 
 @end

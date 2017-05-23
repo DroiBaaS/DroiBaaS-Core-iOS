@@ -9,8 +9,9 @@
 #import "UIKit/UIKit.h"
 
 typedef NS_ENUM(NSUInteger, DroiContactType) {
-//    DROICONTACT_EMAIL,
-    DROICONTACT_PHONE
+    DROICONTACT_EMAIL,
+    DROICONTACT_PHONE,
+    DROICONTACT_ALL
 };
 
 @class DroiUser;
@@ -157,15 +158,6 @@ DroiExpose
  @return Task id. The task can be cancel via cancelBackgroundTask:
  */
 - (NSString*) signUpInBackground:(DroiSignUpCallback) callback;
-
-/**
- Signup with OAuth provider
-
- @param provider OAuth provider. Please call [DroiOAuthProvider providerWithType:] to create provider.
- @param callback The callback object DroiObjectCallback is used to receive save result.
- @return YES for enqueued.
- */
-- (BOOL) signUpOAuth:(DroiOAuthProvider*) provider callback:(DroiObjectCallback) callback;
 
 /**
  Cancel background task
