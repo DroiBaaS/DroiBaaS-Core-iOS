@@ -6,13 +6,20 @@
 #import <Foundation/Foundation.h>
 #import "DroiObject.h"
 
+/// Auth type
 typedef NS_ENUM(int, AuthType) {
+    /// QQ
     AUTH_TYPE_QQ,
+    /// Sina
     AUTH_TYPE_SINA,
-    AUTH_TYPE_WEIXIN,
-    AUTH_TYPE_FACEBOOK
+    /// Weixin
+    AUTH_TYPE_WEIXIN
+//    AUTH_TYPE_FACEBOOK
 };
 
+/**
+ * DroiOAuthProvider. The base class to create OAuth provider.
+ */
 @interface DroiOAuthProvider : NSObject
 /**
  * Create AuthProvider for 3rd party login.
@@ -24,11 +31,16 @@ typedef NS_ENUM(int, AuthType) {
 
 /**
  * Call this function in AppDelegate.openUrl & APpDelegate.handleOpenUrl
+ * @param url The URL resource to open.
+ * @param sourceApplication The bundle ID of the app that is requesting your app to open the URL (url).
+ * @param annotation A Property list supplied by the source app to communicate information to the receiving app.
+ * @return YES for success.
  */
 + (BOOL) handleOpenUrl:(NSURL*) url sourceApplication:(NSString*) sourceApplication annotation:(id) annotation;
 
 /**
  * When you change OAuth AppId/SecureKey in Droi Developer Web platform, need to call this api to fetch OAuth data.
+ * @param callback Callback
  */
 + (BOOL) fetchOAuthKeysInBackground:(DroiObjectCallback) callback;
 
@@ -39,12 +51,18 @@ typedef NS_ENUM(int, AuthType) {
 
 /**
  * Internal use.
+ * @param type Type
+ * @param clazz Clazz
  */
 + (BOOL) registerProviderType:(AuthType) type class:(Class) clazz;
+
 /**
  * Internal use.
+ * @param url The URL resource to open.
+ * @param sourceApplication The bundle ID of the app that is requesting your app to open the URL (url).
+ * @param annotation A Property list supplied by the source app to communicate information to the receiving app.
+ * @return YES for success. 
  */
-
 - (BOOL) handleOpenUrl:(NSURL*) url sourceApplication:(NSString*) sourceApplication annotation:(id) annotation;
 /**
  * User id. Please assign user id when unbinding OAuth.

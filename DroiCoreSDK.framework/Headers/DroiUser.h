@@ -8,16 +8,38 @@
 #import "DroiOAuthProvider.h"
 #import "UIKit/UIKit.h"
 
+/**
+ * Type for resetPassword
+ */
 typedef NS_ENUM(NSUInteger, DroiContactType) {
+    /// reset via EMail
     DROICONTACT_EMAIL,
+    /// reset via Phone number
     DROICONTACT_PHONE,
+    /// reset via EMail / Phone number
     DROICONTACT_ALL
 };
 
-@class DroiUser;
-typedef void(^DroiSignUpCallback)(BOOL result, DroiError* error); // Callback for signup
-typedef void(^DroiLoginCallback)(DroiUser* user, DroiError* error); // Callback for login
+/**
+ * Otp type
+ */
+typedef NS_ENUM(NSUInteger, DroiOtpType) {
+    /// reset via EMail
+    DROIOTP_EMAIL,
+    /// reset via Phone number
+    DROIOTP_PHONE,
+    /// reset via EMail / Phone number
+};
 
+@class DroiUser;
+/// Callback function for signup
+typedef void(^DroiSignUpCallback)(BOOL result, DroiError* error);
+/// Callback function for login
+typedef void(^DroiLoginCallback)(DroiUser* user, DroiError* error);
+
+/**
+ * User for Droi application. The user is also an DroiObject.
+ */
 DroiObjectName(@"_User")
 @interface DroiUser : DroiObject
 
@@ -100,7 +122,7 @@ DroiExpose
  Login with OAuth.
 
  @param provider OAuth provider. Please call [DroiOAuthProvider providerWithType:] to create provider.
- @param callback The callback object DroiLoginCallback is used to receive save result.
+ @param callback The callback object DroiLoginCallback is used to receive login result.
  @param userClazz Custom user class.
  @return YES for enqueued.
  */
@@ -110,10 +132,122 @@ DroiExpose
  Login with OAuth
 
  @param provider OAuth provider. Please call [DroiOAuthProvider providerWithType:] to create provider.
- @param callback The callback object DroiLoginCallback is used to receive save result.
+ @param callback The callback object DroiLoginCallback is used to receive login result.
  @return YES for enqueued.
  */
 + (BOOL) loginWithOAuth :(DroiOAuthProvider*) provider callback:(DroiLoginCallback) callback;
+
+
+/**
+ Login user with OTP.
+
+ @param userId User id
+ @param contact Email or phone number
+ @param type DroiOtpType
+ @param code OTP code
+ @param error Pass DroiError to get error code. Pass null to ignore error details.
+ @return User. nil for login fail.
+ */
++ (DroiUser*) loginOTP:(NSString*) userId contact:(NSString*) contact type:(DroiOtpType) type code:(NSString*) code error:(DroiError**) error;
+/**
+ Login user with OTP.
+ 
+ @param contact Email or phone number
+ @param type DroiOtpType
+ @param code OTP code
+ @param error Pass DroiError to get error code. Pass null to ignore error details.
+ @return User. nil for login fail.
+ */
++ (DroiUser*) loginOTP:(NSString*) contact type:(DroiOtpType) type code:(NSString*) code error:(DroiError**) error;
+
+/**
+ Login OTP user with specified extended DroiUser class
+
+ @param userId User id
+ @param contact Email or phone number
+ @param type DroiOtpType
+ @param code OTP code
+ @param userClazz Custom user class.
+ @param error Pass DroiError to get error code. Pass null to ignore error details.
+ @return User. nil for login fail.
+ */
++ (id) loginOTP:(NSString*) userId contact:(NSString*) contact type:(DroiOtpType) type code:(NSString*) code userClass:(Class) userClazz error:(DroiError**) error;
+/**
+ Login OTP user with specified extended DroiUser class
+ 
+ @param contact Email or phone number
+ @param type DroiOtpType
+ @param code OTP code
+ @param userClazz Custom user class.
+ @param error Pass DroiError to get error code. Pass null to ignore error details.
+ @return User. nil for login fail.
+ */
++ (id) loginOTP:(NSString*) contact type:(DroiOtpType) type code:(NSString*) code userClass:(Class) userClazz error:(DroiError**) error;
+
+/**
+ Login user with OTP in background.
+
+ @param userId User id
+ @param contact Email or phone number
+ @param type DroiOtpType
+ @param code OTP code
+ @param callback The callback object DroiLoginCallback is used to receive login result.
+ @return YES for enqueued.
+ */
++ (BOOL) loginOTPInBackground:(NSString*) userId contact:(NSString*) contact type:(DroiOtpType) type code:(NSString*) code callback:(DroiLoginCallback) callback;
+/**
+ Login user with OTP in background.
+ 
+ @param contact Email or phone number
+ @param type DroiOtpType
+ @param code OTP code
+ @param callback The callback object DroiLoginCallback is used to receive login result.
+ @return YES for enqueued.
+ */
++ (BOOL) loginOTPInBackground:(NSString*) contact type:(DroiOtpType) type code:(NSString*) code callback:(DroiLoginCallback) callback;
+
+/**
+ Login OTP user with specified extended DroiUser class in background.
+
+ @param userId User id
+ @param contact Email or phone number
+ @param type DroiOtpType
+ @param code OTP code
+ @param userClazz Custom user class
+ @param callback The callback object DroiLoginCallback is used to receive login result.
+ @return YES for enqueued.
+ */
++ (BOOL) loginOTPInBackground:(NSString*) userId contact:(NSString*) contact type:(DroiOtpType) type code:(NSString*) code userClass:(Class) userClazz callback:(DroiLoginCallback) callback;
+/**
+ Login OTP user with specified extended DroiUser class in background.
+ 
+ @param contact Email or phone number
+ @param type DroiOtpType
+ @param code OTP code
+ @param userClazz Custom user class
+ @param callback The callback object DroiLoginCallback is used to receive login result.
+ @return YES for enqueued.
+ */
++ (BOOL) loginOTPInBackground:(NSString*) contact type:(DroiOtpType) type code:(NSString*) code userClass:(Class) userClazz callback:(DroiLoginCallback) callback;
+/**
+ Request OTP code for user login
+
+ @param userId User id
+ @param contact Email or phone number
+ @param type DroiOtpType
+ @param callback The callback object DroiLoginCallback is used to receive result.
+ @return DroiError object. Developer should use isOk to check whether this result is OK.
+ */
++ (DroiError*) requestOTPInBackground:(NSString*) userId contact:(NSString*) contact type:(DroiOtpType) type callback:(DroiObjectCallback) callback;
+/**
+ Request OTP code for user login
+ 
+ @param contact Email or phone number
+ @param type DroiOtpType
+ @param callback The callback object DroiLoginCallback is used to receive result.
+ @return DroiError object. Developer should use isOk to check whether this result is OK.
+ */
++ (DroiError*) requestOTPInBackground:(NSString*) contact type:(DroiOtpType) type callback:(DroiObjectCallback) callback;
 
 /**
  Login with anonymous user.
@@ -127,8 +261,8 @@ DroiExpose
  Reset user password.
 
  @param userId UserId
- @param DroiContactType DroiContactType
- @return DroiError DroiError object. Developer should use isOk to check whether this result is OK.
+ @param type DroiContactType
+ @return DroiError object. Developer should use isOk to check whether this result is OK.
  */
 + (DroiError*) resetPasswordWithUserId:(NSString*) userId type:(DroiContactType) type;
 

@@ -6,8 +6,26 @@
 #import "DroiObject.h"
 #import "DroiError.h"
 
+/**
+ * Method for DroiCloud
+ */
 typedef NS_ENUM(NSUInteger, DroiCloudMethod) {
-    DROIMETHOD_GET, DROIMETHOD_HEAD, DROIMETHOD_POST, DROIMETHOD_PUT, DROIMETHOD_PATCH, DROIMETHOD_DELETE, DROIMETHOD_TRACE, DROIMETHOD_OPTIONS
+    /// GET
+    DROIMETHOD_GET,
+    /// HEAD
+    DROIMETHOD_HEAD,
+    /// POST
+    DROIMETHOD_POST,
+    /// PUT
+    DROIMETHOD_PUT,
+    /// PATCH
+    DROIMETHOD_PATCH,
+    /// DELETE
+    DROIMETHOD_DELETE,
+    /// TRACE
+    DROIMETHOD_TRACE,
+    /// OPTIONS
+    DROIMETHOD_OPTIONS
 };
 
 /**

@@ -5,8 +5,12 @@
 #import "DroiObject.h"
 #import "DroiError.h"
 
+/// Callback for getGroup
 typedef void(^DroiGetGroupCallback)(NSArray* result, DroiError* error);
 
+/**
+ * DroiGroup. Control application group, the permission can be set by group.
+ */
 DroiObjectName(@"_Group")
 @interface DroiGroup : DroiObject
 
