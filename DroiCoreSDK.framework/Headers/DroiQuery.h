@@ -107,7 +107,7 @@ FOUNDATION_EXPORT NSString* const DroiQuery_DESC;
  *
  *  @return The query result.
  */
-- (NSArray*) runQuery:(DroiError**) error;
+- (NSArray*) runQuery:(DroiError**) error NS_SWIFT_NAME(runQuery());
 
 /**
  *  Execute DroiQuery to query data in background
@@ -116,7 +116,7 @@ FOUNDATION_EXPORT NSString* const DroiQuery_DESC;
  *
  *  @return The taskId of background task
  */
-- (NSUInteger) runQueryInBackground : (DroiQueryCallback) callback;
+- (NSUInteger) runQueryInBackground : (DroiQueryCallback) callback NS_SWIFT_NAME(runQuery(InBackground:));
 
 /**
  *  Cancel a background task by taskId

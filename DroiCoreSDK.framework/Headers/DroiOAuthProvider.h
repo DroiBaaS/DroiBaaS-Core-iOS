@@ -9,12 +9,13 @@
 /// Auth type
 typedef NS_ENUM(int, AuthType) {
     /// QQ
-    AUTH_TYPE_QQ,
+    AUTH_TYPE_QQ = 0,
     /// Sina
-    AUTH_TYPE_SINA,
+    AUTH_TYPE_SINA = 1,
     /// Weixin
-    AUTH_TYPE_WEIXIN
-//    AUTH_TYPE_FACEBOOK
+    AUTH_TYPE_WEIXIN = 2,
+    /// Droi
+    AUTH_TYPE_DROI = 4
 };
 
 /**
