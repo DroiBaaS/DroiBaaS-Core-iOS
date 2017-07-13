@@ -31,6 +31,16 @@ typedef NS_ENUM(int, AuthType) {
 + (instancetype) providerWithType:(AuthType) type;
 
 /**
+ * Create AuthProvider for 3rd party login.
+ *
+ * @param type AuthType
+ * @param scope Permission scope
+ * @return return DroiOAuthProvider.
+ */
++ (instancetype) providerWithType:(AuthType) type scope:(NSString*) scope;
+
+
+/**
  * Call this function in AppDelegate.openUrl & APpDelegate.handleOpenUrl
  * @param url The URL resource to open.
  * @param sourceApplication The bundle ID of the app that is requesting your app to open the URL (url).
