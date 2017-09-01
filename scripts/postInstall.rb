@@ -1,4 +1,5 @@
 require 'xcodeproj'
+require 'pathname'
 
 class DroiCoreParser
 
@@ -42,13 +43,6 @@ class DroiCoreParser
         end
 
 		
-		# Create new build phase
-		phase = main_target.new_shell_script_build_phase("DroiBaaS Preprocessor") if $index == -1
-		phase.shell_script = '"${PODS_ROOT}/DroiCoreSDK/scripts/baas_cli" parse "${SRCROOT}"' 
-		main_target.build_phases.delete( phase )
-		main_target.build_phases.insert( 0, phase )
-
-
 		# Find a root folder in the users Xcode Project called Pods, or make one
 		# Insert source files
 		# Copy template into source path
@@ -83,6 +77,15 @@ class DroiCoreParser
 			FileUtils.cp "./Pods/DroiCoreSDK/sources/DroiBaaSForSwift.swift", real_path + '/DroiBaaSForSwift.swift'
 		end
 		FileUtils.cp "./Pods/DroiCoreSDK/sources/DroiBaaS.plist", real_path + '/DroiBaaS.plist'
+		
+		# Create new build phase
+		phase = main_target.new_shell_script_build_phase("DroiBaaS Preprocessor") if $index == -1
+		curdir = File.expand_path File.dirname(xcodeprojfile)
+		srcroot = Pathname.new( real_path ).relative_path_from( Pathname.new( curdir ) ).to_s
+		phase.shell_script = '"${PODS_ROOT}/DroiCoreSDK/scripts/baas_cli" parse "${SRCROOT}/' + srcroot + '"' 
+		main_target.build_phases.delete( phase )
+		main_target.build_phases.insert( 0, phase )
+
 
 		project.save()
 		puts 'new build phase'
