@@ -107,7 +107,7 @@ FOUNDATION_EXPORT NSString* const DroiQuery_DESC;
  *
  *  @return The query result.
  */
-- (NSArray*) runQuery:(DroiError**) error NS_SWIFT_NAME(runQuery());
+- (NSArray*) runQuery:(DroiError**) error NS_SWIFT_NAME(runQuery(error:));
 
 /**
  *  Execute DroiQuery to query data in background

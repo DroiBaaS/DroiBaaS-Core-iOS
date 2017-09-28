@@ -60,6 +60,14 @@ typedef NS_ENUM(int, AuthType) {
  */
 + (DroiError*) fetchOAuthKeys;
 
+
+/**
+ Is 3rd party OAuth info ready
+
+ @return true to ready
+ */
++ (BOOL) isOAuthKeysReady;
+
 /**
  * Internal use.
  * @param type Type
@@ -75,6 +83,15 @@ typedef NS_ENUM(int, AuthType) {
  * @return YES for success. 
  */
 - (BOOL) handleOpenUrl:(NSURL*) url sourceApplication:(NSString*) sourceApplication annotation:(id) annotation;
+
+
+/**
+ Check OAuth app installed
+
+ @return true for installed
+ */
+- (BOOL) isOAuthAppInstalled;
+
 /**
  * User id. Please assign user id when unbinding OAuth.
  */
@@ -103,4 +120,10 @@ typedef NS_ENUM(int, AuthType) {
  * OAuthProvider version
  */
 @property (readonly, getter=getProviderVersion) NSString* providerVersion;
+
+/**
+ Get OAuth App Id 
+ */
+@property (readonly, getter=getAppId) NSString* appId;
+
 @end

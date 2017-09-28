@@ -65,7 +65,9 @@ DroiExpose
 
 #pragma mark - Properties
 
-@property (readonly, getter=getSessionToken) NSString* sessionToken;
+@property (readonly, getter=getSessionToken) NSString* sessionToken; // Get Session Token
+
+@property (readonly, getter=getSessionExpiredTime) NSDate* sessionExpiredTime; // Get Session Expired Time
 
 #pragma mark - Static Methods
 /**
@@ -136,6 +138,27 @@ DroiExpose
  @return YES for enqueued.
  */
 + (BOOL) loginWithOAuth :(DroiOAuthProvider*) provider callback:(DroiLoginCallback) callback;
+
+/**
+ Login with OAuth.
+ 
+ @param viewController ViewController to hold OAuth login view.
+ @param provider OAuth provider. Please call [DroiOAuthProvider providerWithType:] to create provider.
+ @param callback The callback object DroiLoginCallback is used to receive login result.
+ @param userClazz Custom user class.
+ @return YES for enqueued.
+ */
++ (BOOL) loginWithOAuth :(UIViewController*) viewController provider: (DroiOAuthProvider*) provider callback:(DroiLoginCallback) callback userClass:(Class) userClazz;
+
+/**
+ Login with OAuth
+ 
+ @param viewController ViewController to hold OAuth login view.
+ @param provider OAuth provider. Please call [DroiOAuthProvider providerWithType:] to create provider.
+ @param callback The callback object DroiLoginCallback is used to receive login result.
+ @return YES for enqueued.
+ */
++ (BOOL) loginWithOAuth :(UIViewController*) viewController provider: (DroiOAuthProvider*) provider callback:(DroiLoginCallback) callback;
 
 
 /**
@@ -229,25 +252,46 @@ DroiExpose
  @return YES for enqueued.
  */
 + (BOOL) loginOTPInBackground:(NSString*) contact type:(DroiOtpType) type code:(NSString*) code userClass:(Class) userClazz callback:(DroiLoginCallback) callback;
+
 /**
  Request OTP code for user login
 
  @param userId User id
  @param contact Email or phone number
  @param type DroiOtpType
- @param callback The callback object DroiLoginCallback is used to receive result.
  @return DroiError object. Developer should use isOk to check whether this result is OK.
  */
-+ (DroiError*) requestOTPInBackground:(NSString*) userId contact:(NSString*) contact type:(DroiOtpType) type callback:(DroiObjectCallback) callback;
++ (DroiError*) requestOtp:(NSString*) userId contact:(NSString*) contact type:(DroiOtpType) type;
+
 /**
  Request OTP code for user login
  
  @param contact Email or phone number
  @param type DroiOtpType
- @param callback The callback object DroiLoginCallback is used to receive result.
  @return DroiError object. Developer should use isOk to check whether this result is OK.
  */
-+ (DroiError*) requestOTPInBackground:(NSString*) contact type:(DroiOtpType) type callback:(DroiObjectCallback) callback;
+
++ (DroiError*) requestOtp:(NSString*) contact type:(DroiOtpType) type;
+
+/**
+ Request OTP code for user login in background thread.
+
+ @param userId User id
+ @param contact Email or phone number
+ @param type DroiOtpType
+ @param callback The callback object DroiLoginCallback is used to receive result.
+ @return YES for enqueued.
+ */
++ (BOOL) requestOTPInBackground:(NSString*) userId contact:(NSString*) contact type:(DroiOtpType) type callback:(DroiObjectCallback) callback;
+/**
+ Request OTP code for user login in background thread.
+ 
+ @param contact Email or phone number
+ @param type DroiOtpType
+ @param callback The callback object DroiLoginCallback is used to receive result.
+ @return YES for enqueued.
+ */
++ (BOOL) requestOTPInBackground:(NSString*) contact type:(DroiOtpType) type callback:(DroiObjectCallback) callback;
 
 /**
  Login with anonymous user.
@@ -256,6 +300,15 @@ DroiExpose
  @return User. nil for login fail.
  */
 + (instancetype) loginWithAnonymous:(DroiError**) error;
+
+/**
+ Login with anonymous user.
+ 
+ @param userClazz Custom user class.
+ @param error Pass DroiError to get error code. Pass null to ignore error details.
+ @return User. nil for login fail.
+ */
++ (instancetype) loginWithAnonymous:(Class) userClazz error:(DroiError**) error;
 
 /**
  Reset user password.
@@ -344,6 +397,17 @@ DroiExpose
  @return YES for enqueued.
  */
 - (BOOL) bindOAuth:(DroiOAuthProvider*) provider callback:(DroiObjectCallback) callback;
+
+/**
+ Bind OAuth to current logged in user.
+ 
+ @param viewController ViewController to hold OAuth login view.
+ @param provider OAuth provider. Please call [DroiOAuthProvider providerWithType:] to create provider.
+ @param callback The callback object DroiObjectCallback is used to receive save result.
+ @return YES for enqueued.
+ */
+- (BOOL) bindOAuth:(UIViewController*) viewController provider:(DroiOAuthProvider*) provider callback:(DroiObjectCallback) callback;
+
 /**
  Unbind OAuth to current logged in user.
  
@@ -352,6 +416,17 @@ DroiExpose
  @return YES for enqueued.
  */
 - (BOOL) unbindOAuth:(DroiOAuthProvider*) provider callback:(DroiObjectCallback) callback;
+
+/**
+ Unbind OAuth to current logged in user.
+ 
+ @param viewController ViewController to hold OAuth login view.
+ @param provider OAuth provider. Please call [DroiOAuthProvider providerWithType:] to create provider.
+ @param callback The callback object DroiObjectCallback is used to receive save result.
+ @return YES for enqueued.
+ */
+- (BOOL) unbindOAuth:(UIViewController*) viewController provider:(DroiOAuthProvider*) provider callback:(DroiObjectCallback) callback;
+
 
 #pragma mark - Save methods
 - (DroiError*) save;
@@ -373,6 +448,13 @@ DroiExpose
  @param autoAnonymousUser YES to enable.
  */
 + (void) setAutoAnonymousUser:(BOOL) autoAnonymousUser;
+
+/**
+ Set default user class
+
+ @param userClazz Custom user class
+ */
++ (void) setDefaultUserClass:(Class) userClazz;
 - (BOOL) isEmailVerified; // Is the email verified
 - (BOOL) isAuthorized; // Is the current user logged in
 - (BOOL) isLoggedIn; // Is the current user logged in
