@@ -204,6 +204,16 @@ FOUNDATION_EXPORT NSString* const DroiQuery_DESC;
  */
 - (DroiQuery*) set : (NSString*) arg1 withValue:(id) value;
 
+
+/**
+ Add value with specific key
+
+ @param field The key name
+ @param amount value.
+ @return The DroiQuery object
+ */
+- (DroiQuery*) add : (NSString*) field amount:(int) amount;
+
 /**
  *  Add a condition for this query
  *
