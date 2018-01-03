@@ -13,9 +13,10 @@ typedef NS_ENUM(int, AuthType) {
     /// Sina
     AUTH_TYPE_SINA = 1,
     /// Weixin
-    AUTH_TYPE_WEIXIN = 2
-    // 3 is reserved for Facebook, do not use
+    AUTH_TYPE_WEIXIN = 2,
+    AUTH_TYPE_FACEBOOK = 3,
     // 4 is reserved for DroiAccount, do not use
+    AUTH_TYPE_TWITTER = 5
 };
 
 /**

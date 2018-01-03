@@ -63,6 +63,8 @@ typedef NS_ENUM(int, DroiErrorCode) {
     DROICODE_TIME_UNCORRECTED = 1070201,
     /// Timeout
     DROICODE_TIMEOUT = 1070202,
+    /// Server LZ4 decompress fail.
+    DROICODE_LZ4_DECOMPRESSED_FAILED = 1070203,
     
     // Users group
     /// Already logged in a valid user
